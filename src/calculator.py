@@ -2,9 +2,22 @@ from src.operations import *
 
 def calculator(result):
 
-    usr_input = input("Write your calcul here...\n")
-    calc_split = usr_input.split()
-    calc_split.append(result)
+    delimiter = " "
+
+    if result == "":
+        calc_input = input("Write your calcul here...\n")
+        calc_split = calc_input.split()
+        result = operation_prio(calc_split)
+        return calc_input, result
+
+    else:
+        calc_input = input(f"Current calcul : {result} ...\n")
+        calc_split = calc_input.split()
+        calc_split.insert(0, str(result))
+        result = operation_prio(calc_split)
+        return calc_input, result
+
+def operation_prio(calc_split:list):
 
     for i, calc in enumerate(calc_split):
         if calc in ["x", "*", ":", "/"]:
@@ -39,13 +52,9 @@ def calculator(result):
 
                 calc_split.remove(str(num1))
                 calc_split.remove(str(num2))
-
+                
     result = calc_split[0]
+
     return result
-
-
-
-
-
 
 
