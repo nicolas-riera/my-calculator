@@ -1,10 +1,7 @@
 from src.operations import *
-
+import time
 def calculator(result):
-
-    delimiter = " "
-
-    if result == "":
+    if result == None:
         calc_input = input("Write your calcul here...\n")
         calc_split = calc_input.split()
         result = operation_prio(calc_split)
@@ -18,7 +15,7 @@ def calculator(result):
         return calc_input, result
 
 def operation_prio(calc_split:list):
-
+    
     for i, calc in enumerate(calc_split):
         if calc in ["x", "*", ":", "/"]:
             num1 = int(calc_split[i-1])
