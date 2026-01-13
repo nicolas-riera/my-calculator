@@ -3,17 +3,19 @@ from src.calculator import calculator
 def menu(result):
 
     while True:
-        if result == "":
+        if result == None:
             try:
                 usr_input = int(input("1. Calculate\n2. History\n0. Exit\nEnter your choice...\n"))
             except ValueError:
                 print("Choice not recognized. Please try again")
+                time.sleep(0.2)
                 continue
 
             match usr_input:
                 case 1:
                     calc_input, result = calculator(result)
                     print(f"{calc_input} is equal to {result}")
+                    time.sleep(0.2)
                 case 2:
                     pass
                 case 0:
@@ -28,17 +30,20 @@ def menu(result):
                 usr_input = int(input("1. Calculate\n2. History\n3. Erase result\n0. Exit\nEnter your choice..."))
             except ValueError:
                 print("Choice not recognized. Please try again")
+                time.sleep(0.2)
                 continue
 
             match usr_input:
                 case 1:
                     calc_input, result = calculator(result)
                     print(f"{calc_input} is equal to {result}")
+                    time.sleep(0.2)
                 case 2:
                     pass
                 case 3:
-                    result = ""
+                    result = None
                     print("The result has been reset !")
+                    time.sleep(0.2)
                     continue
                 case 0:
                     exit()
