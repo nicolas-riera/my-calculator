@@ -1,17 +1,18 @@
 import time
 from src.calculator import calculator
 def menu(result):
-    if result == "":
-        while True:
+    while True:
+        if result == "":
             try:
-                usr_input = int(input("1. Calculate\n2. History\n0. Exit\\nEnter your choice...\n"))
+                usr_input = int(input("1. Calculate\n2. History\n0. Exit\nEnter your choice...\n"))
             except ValueError:
                 print("Choice not recognized. Please try again")
                 continue
 
             match usr_input:
                 case 1:
-                    calculator()
+                    result = calculator(result)
+                    print(f"The operation is equal to {result}")
                 case 2:
                     pass
                 case 0:
@@ -21,21 +22,23 @@ def menu(result):
                     time.sleep(0.2)
                     continue
 
-    else: 
-        while True:
+        else: 
             try:
-                usr_input = int(input("1. Calculate\n2. History\n3. Erase result\n0. Exit\\nEnter your choice..."))
+                usr_input = int(input("1. Calculate\n2. History\n3. Erase result\n0. Exit\nEnter your choice..."))
             except ValueError:
                 print("Choice not recognized. Please try again")
                 continue
 
             match usr_input:
                 case 1:
-                    pass
+                    result = calculator(result)
+                    print(f"The operation is equal to {result}")
                 case 2:
                     pass
                 case 3:
-                    pass
+                    result = ""
+                    print("The result has been reset !")
+                    continue
                 case 0:
                     exit()
                 case _:
