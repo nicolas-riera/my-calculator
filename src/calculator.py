@@ -1,26 +1,47 @@
 from src.operations import *
 
-def calculator():
+def calculator(result):
+
     usr_input = input("Write your calcul here...\n")
     calc_split = usr_input.split()
+    calc_split.append(result)
 
-    for calc in calc_split:
-        if calc == "x" or calc == "*" or calc == "/" or calc == ":":
-            num1 = calc_split[calc-1]
-            num2 = calc_split[calc+1]
+    for i, calc in enumerate(calc_split):
+        if calc in ["x", "*", ":", "/"]:
+            num1 = int(calc_split[i-1])
+            num2 = int(calc_split[i+1])
             if calc == "x" or calc == "*":
-                calc_split[calc] = multiply(num1, num2)
+                operation_result = multiply(num1, num2)
+                calc_split[i] = str(operation_result)
+
+                calc_split.remove(str(num1))
+                calc_split.remove(str(num2))
             else : 
-                calc_split[calc] = divide(num1, num2)
-        
-    for calc in calc_split:
-        if calc == "-" or calc == "+":
-            num1 = calc_split[calc-1]
-            num2 = calc_split[calc+1]
+                operation_result = divide(num1, num2)
+                calc_split[i] = str(operation_result)
+
+                calc_split.remove(str(num1))
+                calc_split.remove(str(num2))
+
+    for i, calc in enumerate(calc_split):
+        if calc in ["+", "-"]:
+            num1 = int(calc_split[i-1])
+            num2 = int(calc_split[i+1])
             if calc == "-":
-                calc_split[calc] = substract(num1, num2)
+                operation_result = substract(num1, num2)
+                calc_split[i] = str(operation_result)
+
+                calc_split.remove(str(num1))
+                calc_split.remove(str(num2))
             else:
-                calc_split[calc] = add(num1, num2)
+                operation_result = add(num1, num2)
+                calc_split[i] = str(operation_result)
+
+                calc_split.remove(str(num1))
+                calc_split.remove(str(num2))
+
+    result = calc_split[0]
+    return result
 
 
 
