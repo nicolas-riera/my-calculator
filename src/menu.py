@@ -1,6 +1,7 @@
 import time
 from src.calculator import calculator
 def menu(result):
+
     while True:
         if result == "":
             try:
@@ -11,8 +12,8 @@ def menu(result):
 
             match usr_input:
                 case 1:
-                    result = calculator(result)
-                    print(f"The operation is equal to {result}")
+                    calc_input, result = calculator(result)
+                    print(f"{calc_input} is equal to {result}")
                 case 2:
                     pass
                 case 0:
@@ -31,8 +32,8 @@ def menu(result):
 
             match usr_input:
                 case 1:
-                    result = calculator(result)
-                    print(f"The operation is equal to {result}")
+                    calc_input, result = calculator(result)
+                    print(f"{calc_input} is equal to {result}")
                 case 2:
                     pass
                 case 3:
