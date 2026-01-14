@@ -9,14 +9,17 @@ from src.error import *
 # Functions
 
 def calc_choice(result):
-    '''The computer split the user input in a list to be calculated
+
+    '''
+    The computer split the user input in a list to be calculated
     
     PARAMETERS -
     result : Function take the result to know if there is one or not
     
     RETURNS -
     calc_input: return the calcul entered by the user for the result display in the menu
-    result: return the result of the calcul.'''
+    result: return the result of the calcul.
+    '''
 
     if result == None:
         print("Current operators taken into accounts : ")
@@ -64,13 +67,16 @@ def calc_choice(result):
         return calc_input, result
 
 def operation_prio_calc(calc_split:list):
-    '''Function to manage and calcul with the operations prio
+
+    '''
+    Function to manage and calcul with the operations prio
     
     PARAMETERS -
     calc_split : the list that contain all the numbers and the operators
     
     RETURNS -
-    result: return the result of the calcul.'''
+    result: return the result of the calcul.
+    '''
     
     i = 0
     while i < len(calc_split):
@@ -109,14 +115,18 @@ def operation_prio_calc(calc_split:list):
     return result
 
 def calc_result(calc_input, result):
-    '''Function that take the result of the calcul and do the result message for the menu
+
+    '''
+    Function that take the result of the calcul and do the result message for the menu
     
     PARAMETERS -
     calc_input : the user input entered in the calcul
     result : the result of the calcul 
     
     RETURNS -
-    result: return the result of the calcul for the menu to keep it in memory.'''
+    result: return the result of the calcul for the menu to keep it in memory.
+    '''
+
     if result == None:
         calc_input, result = calc_choice(result)
         print(f"{calc_input} is equal to {result}")
@@ -139,13 +149,17 @@ def calc_result(calc_input, result):
 
 
 def erase_result(result):
-    '''Function that erase the result memory to go back to a new calcul
+
+    '''
+    Function that erase the result memory to go back to a new calcul
     
     PARAMETERS -
     result : the result of the calcul 
     
     RETURNS -
-    result: return the new result (None) for the menu to keep it in memory and reset.'''
+    result: return the new result (None) for the menu to keep it in memory and reset.
+    '''
+
     result = None
     print("The result has been reset !")
     time.sleep(0.2)
