@@ -23,6 +23,7 @@ def menu():
                 case 2:
                     pass
                 case 0:
+                    clear()
                     exit()
                 case _:
                     error()
