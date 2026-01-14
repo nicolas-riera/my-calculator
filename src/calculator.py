@@ -8,7 +8,7 @@ from src.error import *
 
 # Functions
 
-def calculator(result):
+def calc_choice(result):
     '''The computer split the user input in a list to be calculated
     
     PARAMETERS -
@@ -24,40 +24,47 @@ def calculator(result):
         print("*  or  x")
         print("/  or  :")
         calc_input = input("Write your calcul here...\n")
-        if calc_input == "":
+        if not calc_input:
             calc_error()
             clear()
-            calculator(result)
-        elif calc_input[0].isdigit() == False:
+            return calc_choice(result)
+        
+        elif not calc_input[0].isdigit() or not calc_input[-1].isdigit():
             error()
             clear()
-            calculator(result)
+            return calc_choice(result)
         
-        else:
-            calc_split = re.findall('[+-/*//()]+|\d+',calc_input)
-            result = operation_prio_calc(calc_split)
-            clear()
-            return calc_input, result
+        calc_split = re.findall('[+-/*//()]+|\d+',calc_input)
+        result = operation_prio_calc(calc_split)
+        clear()
+        return calc_input, result
 
     else:
         calc_input = input(f"Current calcul : {result} ...\n")
-        if calc_input[0] not in ["+", "*", "x", ":", "/", "-"] or calc_input == "":
+
+        if not calc_input: 
             calc_error()
             clear()
-            calculator(result)
-        elif calc_input[0].isdigit() == False:
+            return calc_choice(result)
+        
+        elif calc_input[0] not in ["+", "*", "x", ":", "/", "-"]:
+            calc_error()
+            clear()
+            return calc_choice(result)
+        
+        elif not calc_input[-1].isdigit():
             error()
             clear()
-            calculator(result)
-        else:
-            calc_split = re.findall('[+-/*//()]+|\d+',calc_input)
-            calc_split.insert(0, str(result))
-            result = operation_prio_calc(calc_split)
-            clear()
-            return calc_input, result
+            return calc_choice(result)
+
+        calc_split = re.findall('[+-/*//()]+|\d+',calc_input)
+        calc_split.insert(0, str(result))
+        result = operation_prio_calc(calc_split)
+        clear()
+        return calc_input, result
 
 def operation_prio_calc(calc_split:list):
-    '''Function to manage the operations prio
+    '''Function to manage and calcul with the operations prio
     
     PARAMETERS -
     calc_split : the list that contain all the numbers and the operators
@@ -111,7 +118,7 @@ def calc_result(calc_input, result):
     RETURNS -
     result: return the result of the calcul for the menu to keep it in memory.'''
     if result == None:
-        calc_input, result = calculator(result)
+        calc_input, result = calc_choice(result)
         print(f"{calc_input} is equal to {result}")
         time.sleep(0.2)
         input("Press enter to continue..")
@@ -120,13 +127,13 @@ def calc_result(calc_input, result):
     else:
         previous_result = result
 
-        calc_input, new_result = calculator(result)
+        calc_input, new_result = calc_choice(result)
         print(f"{previous_result} {calc_input} is equal to {new_result}")
         time.sleep(0.2)
         input("Press enter to continue..")
         clear()
 
-        new_result = result
+        result = new_result
 
         return result
 
