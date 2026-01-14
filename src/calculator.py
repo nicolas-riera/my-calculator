@@ -164,4 +164,5 @@ def erase_result(result):
     print("The result has been reset !")
     time.sleep(0.2)
     input("Press Enter to continue..")
+    clear()
     return result
