@@ -38,7 +38,7 @@ def calc_choice(result):
             return calc_choice(result)
         
         calc_split = re.findall('[+-/*//()]+|\d+',calc_input)
-        result = operation_prio_calc(calc_split)
+        result = operation_prio_calc(calc_split, result)
         clear()
         return calc_input, result
 
@@ -62,11 +62,11 @@ def calc_choice(result):
 
         calc_split = re.findall('[+-/*//()]+|\d+',calc_input)
         calc_split.insert(0, str(result))
-        result = operation_prio_calc(calc_split)
+        result = operation_prio_calc(calc_split, result)
         clear()
         return calc_input, result
 
-def operation_prio_calc(calc_split:list):
+def operation_prio_calc(calc_split:list, result):
 
     '''
     Function to manage and calcul with the operations prio
@@ -87,8 +87,16 @@ def operation_prio_calc(calc_split:list):
             if calc_split[i] in ["x", "*"]:
                 op_result = Operations.multiply(num1, num2)
             else:
-                op_result = Operations.divide(num1, num2)
-            
+                # Check for division by zero
+                try :
+                    op_result = Operations.divide(num1, num2)
+                except:
+                    clear()
+                    calc_divive_zero_error()
+                    clear()
+                    return None
+                    
+                
             calc_split[i-1 : i+2] = [str(op_result)]
             i -= 1 
         else:
@@ -128,20 +136,26 @@ def calc_result(calc_input, result):
     '''
 
     if result == None:
+
         calc_input, result = calc_choice(result)
-        print(f"{calc_input} is equal to {result}")
-        time.sleep(0.2)
-        input("Press Enter to continue..")
-        clear()
+
+        if result != None:
+            print(f"{calc_input} is equal to {result}")
+            time.sleep(0.2)
+            input("Press Enter to continue..")
+            clear()
         return result
     else:
+
         previous_result = result
 
         calc_input, new_result = calc_choice(result)
-        print(f"{previous_result} {calc_input} is equal to {new_result}")
-        time.sleep(0.2)
-        input("Press Enter to continue..")
-        clear()
+
+        if new_result != None:
+            print(f"{previous_result} {calc_input} is equal to {new_result}")
+            time.sleep(0.2)
+            input("Press Enter to continue..")
+            clear()
 
         result = new_result
 
