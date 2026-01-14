@@ -1,6 +1,10 @@
+# Libraries
+
 from src.calculator import *
 from src.clear import clear
 from src.error import error
+
+# Functions
 
 def menu():
 

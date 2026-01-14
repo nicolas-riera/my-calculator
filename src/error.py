@@ -1,4 +1,8 @@
+# Libraries
+
 import time
+
+# Functions
 
 def error():
 
