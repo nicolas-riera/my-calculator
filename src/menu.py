@@ -30,7 +30,7 @@ def menu():
 
         else: 
             try:
-                usr_input = int(input("1. Calculate\n2. History\n3. Erase result\n0. Exit\nEnter your choice..."))
+                usr_input = int(input("1. Calculate\n2. History\n3. Erase result\n0. Exit\nEnter your choice...\n"))
                 clear()
             except ValueError:
                 error()
