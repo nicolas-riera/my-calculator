@@ -121,7 +121,7 @@ def calc_result(calc_input, result):
         calc_input, result = calc_choice(result)
         print(f"{calc_input} is equal to {result}")
         time.sleep(0.2)
-        input("Press enter to continue..")
+        input("Press Enter to continue..")
         clear()
         return result
     else:
@@ -130,7 +130,7 @@ def calc_result(calc_input, result):
         calc_input, new_result = calc_choice(result)
         print(f"{previous_result} {calc_input} is equal to {new_result}")
         time.sleep(0.2)
-        input("Press enter to continue..")
+        input("Press Enter to continue..")
         clear()
 
         result = new_result
@@ -149,5 +149,5 @@ def erase_result(result):
     result = None
     print("The result has been reset !")
     time.sleep(0.2)
-    input("Press enter to continue..")
+    input("Press Enter to continue..")
     return result
