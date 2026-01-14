@@ -7,13 +7,13 @@ This is a Python calculator that can handle multiple calculations at once while 
 ## Requirements
 
 - Python 3.10+
-- 
+
 ## Installation
 
 Clone the repository:
 
 ```
-git clone https://github.com/nicolas-riera/my-calculator
+git clone https://github.com/nicolas-riera/my-calculator.git
 ```
 
 ## Usage
@@ -28,10 +28,10 @@ python main.py
 
 ## Features
 
-- handle multiple calculations at the same time
-- respect priorities order
-- Integrated history to know the calcul that has been made
-- possibility to continue a calcul with a previous result
+- Handles multiple calculations simultaneously
+- Respects operator precedence
+- Includes a calculation history to track past operations
+- Allows continuing a calculation using a previous result
 
 ## Authors
 
