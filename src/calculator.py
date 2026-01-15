@@ -45,6 +45,7 @@ def calc_choice(result):
             return calc_choice(result)
         
         calc_split = re.findall(r'\d+\.\d+|\d+|[+-/*x://()]', calc_input)
+
         if check_calc_syntax(calc_split):
             result = operation_prio_calc(calc_split, result)
             clear()
@@ -71,7 +72,8 @@ def calc_choice(result):
             clear()
             return calc_choice(result)
 
-        calc_split = re.findall(r'\d+\.\d+|\d+|[+-/*x://()]',calc_input)    
+        calc_split = re.findall(r'\d+\.\d+|\d+|[+-/*x://()]',calc_input)   
+         
         calc_split.insert(0, str(result))
         if check_calc_syntax(calc_split):
             result = operation_prio_calc(calc_split, result)
