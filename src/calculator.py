@@ -44,7 +44,7 @@ def calc_choice(result):
         return calc_input, result
 
     else:
-        calc_input = input(f"Current calcul : {result} ...\n")
+        calc_input = input(f"Current calculation : {result} ...\n")
 
         if not calc_input: 
             calc_error()
