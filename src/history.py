@@ -8,7 +8,17 @@ from src.error import *
 # Functions
 
 def write_history(calc_input, result):
-   
+
+    '''
+
+    Function to write history into a dictionnary to convert it in a json.
+    
+    PARAMETERS -
+    calc_input : The function take the input entered by the user for the calculation.
+    result : The function take the result of the calculation entered by the user.
+    
+    '''
+
     entry = {"input": calc_input, "result": result}
 
     with open("history.json", "r") as f:
@@ -22,10 +32,27 @@ def write_history(calc_input, result):
         history = json.load(f)
 
 def clear_history():
+
+    '''
+
+    Function to clear the history when the user enter the correct input.
+    
+    '''
+
     with open('history.json', 'w') as f:
         json.dump([], f)
 
 def display_history():
+
+    '''
+
+    Function to display the history correctly into the menu.
+
+    RETURN -
+    display_input(): Function return itself if there's an error.
+    
+    '''
+    
     with open("history.json", "r") as f:
         history = json.load(f)
 
