@@ -6,6 +6,7 @@ import re
 from src.operations import *
 from src.clear import clear
 from src.error import *
+from src.history import *
 
 # Functions
 
@@ -156,6 +157,7 @@ def calc_result(calc_input, result):
             time.sleep(0.2)
             input("Press Enter to continue..")
             clear()
+        write_history(calc_input, result)
         return result
     else:
 
@@ -174,6 +176,8 @@ def calc_result(calc_input, result):
 
         result = new_result
 
+        write_history(f"{previous_result} {calc_input}", result)
+
         return result
 
 
@@ -190,6 +194,7 @@ def erase_result(result):
     '''
 
     result = None
+
     print("The result has been reset !")
     time.sleep(0.2)
     input("Press Enter to continue..")

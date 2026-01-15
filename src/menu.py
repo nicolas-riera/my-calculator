@@ -3,6 +3,7 @@
 from src.calculator import *
 from src.clear import clear
 from src.error import error
+from src.history import *
 
 # Functions
 
@@ -31,7 +32,7 @@ def menu():
                 case 1:
                     result = calc_result(calc_input, result)
                 case 2:
-                    pass
+                    display_history()
                 case 3:
                     if result != None:
                         result = erase_result(result)
