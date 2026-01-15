@@ -149,7 +149,10 @@ def calc_result(calc_input, result):
         calc_input, result = calc_choice(result)
 
         if result != None:
-            print(f"{calc_input} is equal to {result}")
+            if (float(result) % 1) == 0.0:
+                print(f"{calc_input} is equal to {int(float(result))}")
+            else:
+                print(f"{calc_input} is equal to {result}")
             time.sleep(0.2)
             input("Press Enter to continue..")
             clear()
@@ -161,7 +164,10 @@ def calc_result(calc_input, result):
         calc_input, new_result = calc_choice(result)
 
         if new_result != None:
-            print(f"{previous_result} {calc_input} is equal to {new_result}")
+            if (float(new_result) % 1) == 0.0:
+                print(f"{previous_result} {calc_input} is equal to {int(float(new_result))}")
+            else:
+                print(f"{previous_result} {calc_input} is equal to {new_result}")
             time.sleep(0.2)
             input("Press Enter to continue..")
             clear()
