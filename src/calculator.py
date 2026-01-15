@@ -44,7 +44,14 @@ def calc_choice(result):
             clear()
             return calc_choice(result)
         
-        calc_split = re.findall(r'\d+\.\d+|\d+|[+-/*x://()]', calc_input)
+        calc_split = re.findall(r'\d+\.\d+|\d+|[()+\-*/x:]', calc_input)
+        # Check for syntax like *(-1)
+        i = 0
+        while i < len(calc_split):
+            if calc_split[i] == "-" and i > 0 and calc_split[i-1] == "(":
+                if i+1 < len(calc_split) and re.fullmatch(r'\d+(\.\d+)?', calc_split[i+1]):
+                    calc_split[i:i+2] = [f"-{calc_split[i+1]}"]
+            i += 1
 
         if check_calc_syntax(calc_split):
             result = operation_prio_calc(calc_split, result)
@@ -72,8 +79,15 @@ def calc_choice(result):
             clear()
             return calc_choice(result)
 
-        calc_split = re.findall(r'\d+\.\d+|\d+|[+-/*x://()]',calc_input)   
-         
+        calc_split = re.findall(r'\d+\.\d+|\d+|[()+\-*/x:]', calc_input)
+        # Check for syntax like *(-1)
+        i = 0
+        while i < len(calc_split):
+            if calc_split[i] == "-" and i > 0 and calc_split[i-1] == "(":
+                if i+1 < len(calc_split) and re.fullmatch(r'\d+(\.\d+)?', calc_split[i+1]):
+                    calc_split[i:i+2] = [f"-{calc_split[i+1]}"]
+            i += 1
+
         calc_split.insert(0, str(result))
         if check_calc_syntax(calc_split):
             result = operation_prio_calc(calc_split, result)
