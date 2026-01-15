@@ -27,7 +27,7 @@ def calc_error():
 def calc_divive_zero_error():
 
     '''
-    Function to print an error message for the calculator when it happens.
+    Function to print an error message for the divisions when divided by zero.
     '''
     
     print("Illegal operation. Cannot divide by zero.")

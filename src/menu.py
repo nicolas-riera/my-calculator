@@ -7,7 +7,9 @@ from src.error import error
 # Functions
 
 def menu():
-
+    '''
+    Function that print the menu in the terminal, and call other functions to do the logic.
+    '''
     result = None
     calc_input = None
 
