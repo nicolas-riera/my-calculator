@@ -34,7 +34,12 @@ def calc_choice(result):
             clear()
             return calc_choice(result)
         
-        elif not calc_input[0].isdigit() or not calc_input[-1].isdigit():
+        if not (calc_input[0].isdigit() or calc_input[0] == "("):
+            error()
+            clear()
+            return calc_choice(result)
+
+        if not (calc_input[-1].isdigit() or calc_input[-1] == ")"):
             error()
             clear()
             return calc_choice(result)
@@ -61,12 +66,12 @@ def calc_choice(result):
             clear()
             return calc_choice(result)
         
-        elif not calc_input[-1].isdigit():
+        if not (calc_input[-1].isdigit() or calc_input[-1] == ")"):
             error()
             clear()
             return calc_choice(result)
 
-        calc_split = re.findall('\d+\.\d+|\d+|[+-/*x://()]',calc_input)    
+        calc_split = re.findall(r'\d+\.\d+|\d+|[+-/*x://()]',calc_input)    
         calc_split.insert(0, str(result))
         if check_calc_syntax(calc_split):
             result = operation_prio_calc(calc_split, result)
@@ -87,6 +92,11 @@ def operation_prio_calc(calc_split:list, result):
     RETURNS -
     result: return the result of the calcul.
     '''
+
+    calc_split = resolve_parentheses(calc_split)
+
+    if calc_split == []:
+        return None
     
     i = 0
     while i < len(calc_split):
@@ -131,6 +141,50 @@ def operation_prio_calc(calc_split:list, result):
     result = calc_split[0]
 
     return result
+
+def resolve_parentheses(calc_split: list):
+
+    """
+    todo
+    """
+
+    # Check for brackets
+    stack = []
+    for token in calc_split:
+        if token == "(":
+            stack.append("(")
+        elif token == ")":
+            if not stack:
+                error_bracket_not_open()
+                return []
+            stack.pop()
+
+    if stack:
+       error_bracket_not_closed()
+       return []
+   
+    calc = calc_split[:]  
+
+    while "(" in calc:
+
+        open_index = len(calc) - 1 - calc[::-1].index("(")
+        close_index = calc.index(")", open_index)
+
+        sub_expr = calc[open_index + 1 : close_index]
+
+        if not sub_expr:
+            error_bracket_empty()
+            return []
+
+        sub_result = operation_prio_calc(sub_expr, None)
+
+        if sub_result is None:
+            error_bracket_calculation()
+            return []
+
+        calc[open_index : close_index + 1] = [str(sub_result)]
+
+    return calc
 
 def calc_result(calc_input, result):
 
