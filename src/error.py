@@ -44,6 +44,12 @@ def check_calc_syntax(calc_list):
     
     check_value_int = True
     for e in calc_list:
+        if e =="(":
+            check_value_int = True
+            continue
+        if e == ")":
+            check_value_int = False
+            continue
         if check_value_int:
             try:
                 float(e)
@@ -62,3 +68,45 @@ def check_calc_syntax(calc_list):
                 input("Press Enter to try again.")
                 return False
     return True
+
+def error_bracket_not_open():
+
+    '''
+    Function to print an error message if the user enter a closing bracket without entering an open one.
+    '''
+
+    print("Bracket input error. Bracket is closed but never opened.")
+    time.sleep(0.2)
+    input("Press Enter to try again.")
+
+def error_bracket_not_closed():
+
+    '''
+    Function to print an error message if the user enter a opening bracket without closing it.
+    '''
+
+    print("Bracket input error. Bracked is opened but never closed.")
+    time.sleep(0.2)
+    input("Press Enter to try again.")
+
+
+def error_bracket_empty():
+
+    '''
+    Function to print an error message if the user enter brackets but let it with nothing.
+    '''
+    
+    print("Bracket input error. Backet is empty.")
+    time.sleep(0.2)
+    input("Press Enter to try again.")
+    
+def error_bracket_calculation():
+    
+    '''
+    Function to print an error message if the user enter an incorrect calculation into the bracket.
+    '''
+    
+    print("Bracket input error. Calculation cannot be done.")
+    time.sleep(0.2)
+    input("Press Enter to try again.")
+    
