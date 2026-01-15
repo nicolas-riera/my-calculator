@@ -27,7 +27,7 @@ def calc_choice(result):
         print("+  |  -")
         print("*  or  x")
         print("/  or  :")
-        calc_input = input("Write your calcul here...\n")
+        calc_input = input("Write your calculation here...\n").strip().replace(",", ".")
         if not calc_input:
             calc_error()
             clear()
@@ -38,7 +38,7 @@ def calc_choice(result):
             clear()
             return calc_choice(result)
         
-        calc_split = re.findall('[+-/*//()]+|\d+',calc_input)
+        calc_split = re.findall(r'\d+\.\d+|\d+|[+-/*x://()]', calc_input)
         result = operation_prio_calc(calc_split, result)
         clear()
         return calc_input, result
@@ -61,7 +61,7 @@ def calc_choice(result):
             clear()
             return calc_choice(result)
 
-        calc_split = re.findall('[+-/*//()]+|\d+',calc_input)
+        calc_split = re.findall('\d+\.\d+|\d+|[+-/*x://()]',calc_input)
         calc_split.insert(0, str(result))
         result = operation_prio_calc(calc_split, result)
         clear()
