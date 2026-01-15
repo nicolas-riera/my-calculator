@@ -39,9 +39,13 @@ def calc_choice(result):
             return calc_choice(result)
         
         calc_split = re.findall(r'\d+\.\d+|\d+|[+-/*x://()]', calc_input)
-        result = operation_prio_calc(calc_split, result)
-        clear()
-        return calc_input, result
+        if check_calc_syntax(calc_split):
+            result = operation_prio_calc(calc_split, result)
+            clear()
+            return calc_input, result
+        else:
+            clear()
+            return calc_choice(result)
 
     else:
         calc_input = input(f"Continue calculation : {result} ...\n")
@@ -61,11 +65,15 @@ def calc_choice(result):
             clear()
             return calc_choice(result)
 
-        calc_split = re.findall('\d+\.\d+|\d+|[+-/*x://()]',calc_input)
+        calc_split = re.findall('\d+\.\d+|\d+|[+-/*x://()]',calc_input)    
         calc_split.insert(0, str(result))
-        result = operation_prio_calc(calc_split, result)
-        clear()
-        return calc_input, result
+        if check_calc_syntax(calc_split):
+            result = operation_prio_calc(calc_split, result)
+            clear()
+            return calc_input, result
+        else:
+            clear()
+            return calc_choice(result)
 
 def operation_prio_calc(calc_split:list, result):
 
