@@ -27,7 +27,7 @@ def calc_choice(result):
 
     if result == None:
 
-        calc_input = input(f"Current operators taken into accounts :{Fore.BLUE}\n+  |  -\n*  or  x\n/  or  :\n^  or  v\n{Style.RESET}Write your calculation here...\n").strip().replace(",", ".").lower()
+        calc_input = input(f"Current operators taken into accounts :{Fore.BLUE}\n+  |  -\n*  or  x\n/  or  :\n^  or  v\n{Fore.white}Write your calculation here...\n").strip().replace(",", ".").lower()
         
         if not calc_input:
             calc_error()
@@ -253,7 +253,7 @@ def calc_result(calc_input, result):
             
             print(f"{Fore.cyan}{calc_input} {Fore.white}is equal to : {Fore.blue}{round(result, 10)}{Style.reset}")
             time.sleep(0.2)
-            input("Press Enter to continue..")
+            input(f"{Fore.white}Press Enter to continue..")
             clear()
 
         write_history(calc_input, result)
@@ -279,7 +279,7 @@ def calc_result(calc_input, result):
             else:
                 print(f"{Fore.cyan}{previous_result} {calc_input} {Fore.white}is equal to : {Fore.blue}{round(float(new_result), 10)}{Style.reset}")
             time.sleep(0.2)
-            input("Press Enter to continue..")
+            input(f"{Fore.white}Press Enter to continue..")
             clear()
 
         result = new_result
@@ -305,7 +305,7 @@ def erase_result(result):
 
     print(f"{Fore.red}The result has been reset !{Style.reset}")
     time.sleep(0.2)
-    input("Press Enter to continue..")
+    input(f"{Fore.white}Press Enter to continue..")
     clear()
 
     return result
