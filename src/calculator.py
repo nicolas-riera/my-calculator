@@ -26,9 +26,7 @@ def calc_choice(result):
 
     if result == None:
 
-        print(f"{Fore.red}Current operators taken into accounts :")
-        print(f"{Fore.white}\n+  |  -\n*  or  x\n/  or  :\n^  or  v")
-        calc_input = input(f"{Fore.red}Write your calculation here...\n{Style.reset}").strip().replace(",", ".").lower()
+        calc_input = input(f"{Fore.red}Current operators taken into accounts :{Fore.white}\n+  |  -\n*  or  x\n/  or  :\n^  or  v\n{Fore.red}Write your calculation here...\n{Style.reset}").strip().replace(",", ".").lower()
         
         if not calc_input:
             calc_error()
