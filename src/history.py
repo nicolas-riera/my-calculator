@@ -8,6 +8,11 @@ from src.error import *
 # Functions
 
 def create_json_if_not_found():
+
+    '''
+    Function that check if the history.json already exists. If it doesn't, we use the clear_history function to create it.
+    '''
+
     try :
         with open("history.json", "r") as f:
             history = json.load(f)
