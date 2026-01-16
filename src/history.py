@@ -62,7 +62,7 @@ def display_history():
 
     # Check if history is empty
     if history == []:
-        print("There's no history yet. Please try to calculate first.")
+        print(f"{Fore.red}There's no history yet. {Fore.blue}Please try to calculate first.{Style.reset}")
         time.sleep(0.2)
         input("Press Enter to continue")
 
@@ -87,7 +87,7 @@ def display_history():
             case 1:
                 clear_history()
                 clear()
-                print("History has been cleared !")
+                print(f"{Fore.red}History has been cleared !{Style.reset}")
                 time.sleep(0.2)
                 input("Press Enter to continue")
 
