@@ -1,7 +1,7 @@
 # Libraries
 
 import time
-
+from colored import Fore, Style
 # Functions
 
 def error():
@@ -10,7 +10,7 @@ def error():
     Function to print an error message when it happens.
     '''
 
-    print("Choice not recognized.")
+    print(f"{Fore.red}Choice not recognized.{Style.reset}")
     time.sleep(0.2)
     input("Press Enter to try again.")
 
@@ -20,7 +20,7 @@ def calc_error():
     Function to print an error message for the calculator when it happens.
     '''
 
-    print("An error has appeared. Please enter an operator first.")
+    print(f"{Fore.red}An error has appeared. Please enter an operator first.{Style.reset}")
     time.sleep(0.2)
     input("Press Enter to try again.")
 
@@ -30,7 +30,7 @@ def calc_divive_zero_error():
     Function to print an error message for the divisions when divided by zero.
     '''
     
-    print("Illegal operation. Cannot divide by zero.")
+    print(f"{Fore.red}Illegal operation. Cannot divide by zero.{Style.reset}")
     time.sleep(0.2)
     input("Press Enter to try again.")
 
@@ -59,7 +59,7 @@ def check_calc_syntax(calc_list):
                 float(e)
                 check_value_int = False
             except:
-                print("Syntax error. Multiple operators next to each other detected.")
+                print(f"{Fore.red}Syntax error. Multiple operators next to each other detected.{Style.reset}")
                 time.sleep(0.2)
                 input("Press Enter to try again.")
                 return False
@@ -69,7 +69,7 @@ def check_calc_syntax(calc_list):
             if e in ["+", "*", "x", ":", "/", "-", "^", "v"]:
                 check_value_int = True
             else:
-                print("Syntax error. Multiple numbers next to each other detected.")
+                print(f"{Fore.red}Syntax error. Multiple numbers next to each other detected.{Style.reset}")
                 time.sleep(0.2)
                 input("Press Enter to try again.")
                 return False
@@ -82,7 +82,7 @@ def error_bracket_not_open():
     Function to print an error message if the user enter a closing bracket without entering an open one.
     '''
 
-    print("Bracket input error. Bracket is closed but never opened.")
+    print(f"{Fore.red}Bracket input error. Bracket is closed but never opened.{Style.reset}")
     time.sleep(0.2)
     input("Press Enter to try again.")
 
@@ -92,7 +92,7 @@ def error_bracket_not_closed():
     Function to print an error message if the user enter a opening bracket without closing it.
     '''
 
-    print("Bracket input error. Bracked is opened but never closed.")
+    print(f"{Fore.red}Bracket input error. Bracked is opened but never closed.{Style.reset}")
     time.sleep(0.2)
     input("Press Enter to try again.")
 
@@ -103,7 +103,7 @@ def error_bracket_empty():
     Function to print an error message if the user enter brackets but let it with nothing.
     '''
     
-    print("Bracket input error. Backet is empty.")
+    print(f"{Fore.red}Bracket input error. Backet is empty.{Style.reset}")
     time.sleep(0.2)
     input("Press Enter to try again.")
     
@@ -113,7 +113,7 @@ def error_bracket_calculation():
     Function to print an error message if the user enter an incorrect calculation into the bracket.
     '''
     
-    print("Bracket input error. Calculation cannot be done.")
+    print(f"{Fore.red}Bracket input error. Calculation cannot be done.{Style.reset}")
     time.sleep(0.2)
     input("Press Enter to try again.")
     

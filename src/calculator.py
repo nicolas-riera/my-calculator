@@ -7,6 +7,7 @@ from src.operations import *
 from src.clear import clear
 from src.error import *
 from src.history import *
+from colored import Fore, Style
 
 # Functions
 
@@ -25,20 +26,21 @@ def calc_choice(result):
 
     if result == None:
 
-        print("Current operators taken into accounts : \n+  |  -\n*  or  x\n/  or  :\n^  or  v")
-        calc_input = input("Write your calculation here...\n").strip().replace(",", ".").lower()
+        print(f"{Fore.red}Current operators taken into accounts :")
+        print(f"{Fore.white}\n+  |  -\n*  or  x\n/  or  :\n^  or  v")
+        calc_input = input(f"{Fore.red}Write your calculation here...\n{Style.reset}").strip().replace(",", ".").lower()
         
         if not calc_input:
             calc_error()
             clear()
             return calc_choice(result)
         
-        if not (calc_input[0].isdigit() or calc_input[0] == "("):
+        elif not (calc_input[0].isdigit() or calc_input[0] == "("):
             error()
             clear()
             return calc_choice(result)
 
-        if not (calc_input[-1].isdigit() or calc_input[-1] == ")"):
+        elif not (calc_input[-1].isdigit() or calc_input[-1] == ")"):
             error()
             clear()
             return calc_choice(result)
@@ -61,7 +63,7 @@ def calc_choice(result):
             return calc_choice(result)
 
     else:
-        calc_input = input(f"Continue calculation : {result} ...\n")
+        calc_input = input(f"{Fore.red}Continue calculation : {result} ...\n{Style.reset}")
 
         if not calc_input: 
             calc_error()
@@ -73,7 +75,7 @@ def calc_choice(result):
             clear()
             return calc_choice(result)
         
-        if not (calc_input[-1].isdigit() or calc_input[-1] == ")"):
+        elif not (calc_input[-1].isdigit() or calc_input[-1] == ")"):
             error()
             clear()
             return calc_choice(result)
@@ -250,7 +252,7 @@ def calc_result(calc_input, result):
             else :
                 result = float(result)
             
-            print(f"{calc_input} is equal to {round(result, 10)}")
+            print(f"{Fore.red}{calc_input} is equal to : {Style.reset}{round(result, 10)}")
             time.sleep(0.2)
             input("Press Enter to continue..")
             clear()
@@ -274,9 +276,9 @@ def calc_result(calc_input, result):
                 new_result = float(new_result)
 
             if (float(new_result) % 1) == 0.0:
-                print(f"{previous_result} {calc_input} is equal to {int(float(new_result))}")
+                print(f"{Fore.red}{previous_result} {calc_input} is equal to : {Style.reset}{int(float(new_result))}")
             else:
-                print(f"{previous_result} {calc_input} is equal to {round(float(new_result), 10)}")
+                print(f"{Fore.red}{previous_result} {calc_input} is equal to : {Style.reset}{round(float(new_result), 10)}")
             time.sleep(0.2)
             input("Press Enter to continue..")
             clear()
@@ -302,7 +304,7 @@ def erase_result(result):
 
     result = None
 
-    print("The result has been reset !")
+    print(f"{Fore.red}The result has been reset !{Style.reset}")
     time.sleep(0.2)
     input("Press Enter to continue..")
     clear()

@@ -4,6 +4,7 @@ from src.calculator import *
 from src.clear import clear
 from src.error import error
 from src.history import *
+from colored import Fore
 
 # Functions
 
@@ -21,9 +22,16 @@ def menu():
             try:
                 # Different menus depending on the state of the calculator
                 if result == None:
-                    usr_input = int(input("1. Calculate\n2. History\n0. Exit\nEnter your choice...\n"))
+                    print(f"{Fore.red}1. Calculate")
+                    print(f"{Fore.blue}2. History")
+                    print(f"{Fore.black}0. Exit")
+                    usr_input = int(input(f"{Fore.white}Enter your choice...\n"))
                 else:
-                    usr_input = int(input("1. Calculate\n2. History\n3. Erase result\n0. Exit\nEnter your choice...\n"))
+                    print(f"{Fore.red}1. Calculate")
+                    print(f"{Fore.blue}2. History")
+                    print(f"{Fore.yellow}3. Erase result")
+                    print(f"{Fore.black}0. Exit{Style.reset}")
+                    usr_input = int(input(f"Enter your choice...\n"))
                 clear()
 
             except ValueError:
