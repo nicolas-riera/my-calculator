@@ -27,9 +27,9 @@ def menu():
             try:
                 # Different menus depending on the state of the calculator
                 if result == None:
-                    usr_input = int(input(f"{Fore.red}1. Calculate\n{Fore.blue}2. History\n{Fore.black}0. Exit\n{Fore.white}Enter your choice...\n"))
+                    usr_input = int(input(f"{Fore.blue}1. Calculate\n{Fore.yellow}2. History\n{Fore.black}0. Exit\n{Fore.white}Enter your choice...\n"))
                 else:
-                    usr_input = int(input(f"{Fore.red}1. Calculate\n{Fore.blue}2. History\n{Fore.yellow}3. Erase result\n{Fore.black}0. Exit\n{Fore.white}Enter your choice...\n"))
+                    usr_input = int(input(f"{Fore.blue}1. Calculate\n{Fore.yellow}2. History\n{Fore.red}3. Erase result\n{Fore.black}0. Exit\n{Fore.white}Enter your choice...\n"))
                 clear()
 
             except ValueError:

@@ -27,7 +27,7 @@ def calc_choice(result):
 
     if result == None:
 
-        calc_input = input(f"{Fore.red}Current operators taken into accounts :{Fore.white}\n+  |  -\n*  or  x\n/  or  :\n^  or  v\n{Fore.red}Write your calculation here...\n{Style.reset}").strip().replace(",", ".").lower()
+        calc_input = input(f"Current operators taken into accounts :{Fore.BLUE}\n+  |  -\n*  or  x\n/  or  :\n^  or  v\n{Style.RESET}Write your calculation here...\n").strip().replace(",", ".").lower()
         
         if not calc_input:
             calc_error()
@@ -62,7 +62,7 @@ def calc_choice(result):
             return calc_choice(result)
 
     else:
-        calc_input = input(f"{Fore.red}Continue calculation : {result} ...\n{Style.reset}")
+        calc_input = input(f"Continue calculation : {Fore.cyan}{result} ...\n{Style.reset}")
 
         if not calc_input: 
             calc_error()
@@ -251,7 +251,7 @@ def calc_result(calc_input, result):
             else :
                 result = float(result)
             
-            print(f"{Fore.red}{calc_input} is equal to : {Style.reset}{round(result, 10)}")
+            print(f"{Fore.cyan}{calc_input} {Fore.white}is equal to : {Fore.blue}{round(result, 10)}{Style.reset}")
             time.sleep(0.2)
             input("Press Enter to continue..")
             clear()
@@ -275,9 +275,9 @@ def calc_result(calc_input, result):
                 new_result = float(new_result)
 
             if (float(new_result) % 1) == 0.0:
-                print(f"{Fore.red}{previous_result} {calc_input} is equal to : {Style.reset}{int(float(new_result))}")
+                print(f"{Fore.cyan}{previous_result} {calc_input} {Fore.white}is equal to : {Fore.blue}{int(float(new_result))}{Style.reset}")
             else:
-                print(f"{Fore.red}{previous_result} {calc_input} is equal to : {Style.reset}{round(float(new_result), 10)}")
+                print(f"{Fore.cyan}{previous_result} {calc_input} {Fore.white}is equal to : {Fore.blue}{round(float(new_result), 10)}{Style.reset}")
             time.sleep(0.2)
             input("Press Enter to continue..")
             clear()
