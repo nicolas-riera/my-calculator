@@ -7,6 +7,13 @@ from src.error import *
 
 # Functions
 
+def create_json_if_not_found():
+    try :
+        with open("history.json", "r") as f:
+            history = json.load(f)
+    except:
+        clear_history()
+
 def write_history(calc_input, result):
 
     '''
