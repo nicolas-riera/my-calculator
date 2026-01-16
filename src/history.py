@@ -31,6 +31,9 @@ def write_history(calc_input, result):
 
     history.append(entry)
 
+    if len(history) > 100:
+        history.pop(0)
+
     with open("history.json", "w") as f:
         json.dump(history, f, indent=4)
 
