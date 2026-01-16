@@ -1,10 +1,15 @@
 # Libraries
 
+try :
+    from colored import Fore, Style
+except:
+    print("You don't have colored installed, please install it : pip install colored")
+    exit()
+    
 from src.calculator import *
 from src.clear import clear
 from src.error import error
 from src.history import *
-from colored import Fore
 
 # Functions
 

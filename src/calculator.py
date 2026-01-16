@@ -2,12 +2,13 @@
 
 import time
 import re
+from colored import Fore, Style
+
 
 from src.operations import *
 from src.clear import clear
 from src.error import *
 from src.history import *
-from colored import Fore, Style
 
 # Functions
 

@@ -7,6 +7,7 @@ This is a Python calculator that can handle multiple calculations at once while 
 ## Requirements
 
 - Python 3.10+
+- Colored : `pip install colored`
 
 ## Installation
 

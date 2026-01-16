@@ -2,6 +2,7 @@
 
 import time
 from colored import Fore, Style
+
 # Functions
 
 def error():
