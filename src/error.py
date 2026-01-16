@@ -49,12 +49,12 @@ def check_calc_syntax(calc_list):
         if e =="(":
             check_value_int = True
             continue
-        if e == ")":
+        elif e == ")":
             check_value_int = False
             continue
 
         # Check number after operator or open bracket
-        if check_value_int:
+        elif check_value_int:
             try:
                 float(e)
                 check_value_int = False
