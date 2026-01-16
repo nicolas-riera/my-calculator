@@ -44,12 +44,16 @@ def check_calc_syntax(calc_list):
     
     check_value_int = True
     for e in calc_list:
+
+        # Check brackets
         if e =="(":
             check_value_int = True
             continue
         if e == ")":
             check_value_int = False
             continue
+
+        # Check number after operator or open bracket
         if check_value_int:
             try:
                 float(e)
@@ -59,14 +63,17 @@ def check_calc_syntax(calc_list):
                 time.sleep(0.2)
                 input("Press Enter to try again.")
                 return False
+        
+        # Check operator after number or closed bracket
         else:
-            if e in ["+", "*", "x", ":", "/", "-"]:
+            if e in ["+", "*", "x", ":", "/", "-", "^", "v"]:
                 check_value_int = True
             else:
                 print("Syntax error. Multiple numbers next to each other detected.")
                 time.sleep(0.2)
                 input("Press Enter to try again.")
                 return False
+            
     return True
 
 def error_bracket_not_open():

@@ -9,5 +9,7 @@ from src.history import clear_history
 if __name__ == "__main__":
 
     clear()
-    clear_history()    
+    clear_history()  
+
     menu()
+    

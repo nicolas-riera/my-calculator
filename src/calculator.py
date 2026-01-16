@@ -24,11 +24,10 @@ def calc_choice(result):
     '''
 
     if result == None:
-        print("Current operators taken into accounts : ")
-        print("+  |  -")
-        print("*  or  x")
-        print("/  or  :")
-        calc_input = input("Write your calculation here...\n").strip().replace(",", ".")
+
+        print("Current operators taken into accounts : \n+  |  -\n*  or  x\n/  or  :\n^  or  v")
+        calc_input = input("Write your calculation here...\n").strip().replace(",", ".").lower()
+        
         if not calc_input:
             calc_error()
             clear()
@@ -44,7 +43,7 @@ def calc_choice(result):
             clear()
             return calc_choice(result)
         
-        calc_split = re.findall(r'\d+\.\d+|\d+|[()+\-*/x:]', calc_input)
+        calc_split = re.findall(r'\d+\.\d+|\d+|[()+\-*/x:v^]', calc_input)
         # Check for syntax like *(-1)
         i = 0
         while i < len(calc_split):
@@ -69,7 +68,7 @@ def calc_choice(result):
             clear()
             return calc_choice(result)
         
-        elif calc_input[0] not in ["+", "*", "x", ":", "/", "-"]:
+        elif calc_input[0] not in ["+", "*", "x", ":", "/", "-", "^", "v"]:
             calc_error()
             clear()
             return calc_choice(result)
@@ -79,7 +78,7 @@ def calc_choice(result):
             clear()
             return calc_choice(result)
 
-        calc_split = re.findall(r'\d+\.\d+|\d+|[()+\-*/x:]', calc_input)
+        calc_split = re.findall(r'\d+\.\d+|\d+|[()+\-*/x:v^]', calc_input)
         # Check for syntax like *(-1)
         i = 0
         while i < len(calc_split):
@@ -109,11 +108,27 @@ def operation_prio_calc(calc_split:list, result):
     result: return the result of the calcul.
     '''
 
+    # Bracket calculations
     calc_split = resolve_parentheses(calc_split)
 
     if calc_split == []:
         return None
     
+    # Exponentiation operator calculations
+    i = 0
+    while i < len(calc_split):
+        if calc_split[i] in ["^", "v"]:
+            num1 = float(calc_split[i-1])
+            num2 = float(calc_split[i+1])
+            
+            op_result = Operations.power(num1, num2)
+            
+            calc_split[i-1 : i+2] = [str(op_result)]
+            i -= 1 
+        else:
+            i += 1
+    
+    # Multiplication and division calculations
     i = 0
     while i < len(calc_split):
         if calc_split[i] in ["x", "*", ":", "/"]:
@@ -138,6 +153,7 @@ def operation_prio_calc(calc_split:list, result):
         else:
             i += 1
 
+    # Addition and substraction calculations
     i = 0
     while i < len(calc_split):
         if calc_split[i] in ["+", "-"]:
@@ -161,7 +177,13 @@ def operation_prio_calc(calc_split:list, result):
 def resolve_parentheses(calc_split: list):
 
     """
-    todo
+    Function that take care of the brackets and manage errors.
+    
+    PARAMETERS -
+    calc_split : the list that contain all the numbers and the operators.
+    
+    RETURNS -
+    calc: Return the list with all the brackets calculations done.
     """
 
     # Check for brackets
@@ -178,7 +200,8 @@ def resolve_parentheses(calc_split: list):
     if stack:
        error_bracket_not_closed()
        return []
-   
+    
+   # Copy of the list, to do modifications without destroying the original one
     calc = calc_split[:]  
 
     while "(" in calc:
@@ -215,6 +238,7 @@ def calc_result(calc_input, result):
     result: return the result of the calcul for the menu to keep it in memory.
     '''
 
+    # First calculation
     if result == None:
 
         calc_input, result = calc_choice(result)
@@ -234,6 +258,8 @@ def calc_result(calc_input, result):
         write_history(calc_input, result)
 
         return result
+    
+    # Continue calculation
     else:
 
         previous_result = result
@@ -280,4 +306,5 @@ def erase_result(result):
     time.sleep(0.2)
     input("Press Enter to continue..")
     clear()
+
     return result
