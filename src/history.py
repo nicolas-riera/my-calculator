@@ -89,7 +89,7 @@ def display_history():
                 clear()
                 print(f"{Fore.red}History has been cleared !{Style.reset}")
                 time.sleep(0.2)
-                input("Press Enter to continue")
+                input(f"{Fore.white}Press Enter to continue")
 
             case 0:
                 pass
