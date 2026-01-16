@@ -74,7 +74,7 @@ def display_history():
             print(f"{Fore.cyan}{e["input"]} {Fore.white}= {Fore.blue}{e["result"]}\n")
 
         try:
-            usr_input = int(input(f"{Fore.red}1. Clear History\n{Fore.black}0. Exit\n{Fore.white}Enter your choice...\n"))
+            usr_input = int(input(f"{Fore.red}1. Clear History\n{Fore.RGB(150, 150, 150)}0. Exit\n{Fore.white}Enter your choice...\n"))
      
         except ValueError:
             clear()

@@ -4,3 +4,8 @@ __pycache__/
 *.pyo
 
 history.json
+
+#pyinstaller
+build
+dist
+main.spec
