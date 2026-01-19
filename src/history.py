@@ -85,7 +85,7 @@ def display_history():
             clear()
             error()
             clear()
-            display_history()
+            return display_history()
 
         match usr_input:
 
